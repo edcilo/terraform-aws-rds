@@ -36,14 +36,12 @@ module "vpc" {
 
 resource "aws_db_subnet_group" "postgres_sub_gr" {
   name        = "${var.rds_name}-subnet-group"
-  description = "terrafom db subnet group"
   subnet_ids  = module.vpc.public_subnets
 }
 
 
 resource "aws_security_group" "sec_grp_rds" {
   name        = "${var.rds_name}-group"
-  description = "rds security group"
   vpc_id      = module.vpc.vpc_id
 
   ingress {
